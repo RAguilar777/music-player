@@ -1,0 +1,195 @@
+﻿<Window x:Class="MusicPlayer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:uc="clr-namespace:MusicPlayer.UserControls"
+        Height="750" Width="1100" ResizeMode="NoResize" AllowsTransparency="True" 
+        WindowStartupLocation="CenterScreen" WindowStyle="None" Background="Transparent">
+
+    <Border Background="White" CornerRadius="40" MouseDown="Border_MouseDown">
+        <Grid>
+            <!--Column Setup-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+
+            <!--Row Setup-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="125" />
+            </Grid.RowDefinitions>
+
+
+            <!--Menu Layout-->
+            <Border Background="White" CornerRadius="40 0 0 40" Grid.RowSpan="2">
+                <StackPanel Margin="0 30 0 0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="63 10 0 10">
+                        <!--Buttons for application (exit, minimize, etc.)-->
+                        <Ellipse Fill="Red" Width="10" Height="10" />
+                        <Ellipse Fill="Yellow" Width="10" Height="10" Margin="7 0" />
+                        <Ellipse Fill="LightGreen" Width="10" Height="10" />
+                    </StackPanel>
+
+                    <TextBlock Text="Library" Style="{StaticResource Title}" />
+
+                    <Button Style="{StaticResource Button}" Background="SkyBlue" Foreground="White">
+                        <Grid>
+                            <TextBlock Text="Home" Margin="0 0 0 2" />
+                            <Icon:PackIconMaterial Style="{StaticResource ButtonIcon}" />
+                        </Grid>
+                    </Button>
+
+                    <Button Style="{StaticResource Button}" Background="SkyBlue" Foreground="White">
+                        <Grid>
+                            <TextBlock Text="Playlists" Margin="0 0 0 2" />
+                            <Icon:PackIconMaterial Style="{StaticResource ButtonIcon}" />
+                        </Grid>
+                    </Button>
+
+                    <Button Style="{StaticResource Button}" Background="SkyBlue" Foreground="White">
+                        <Grid>
+                            <TextBlock Text="Artists" Margin="0 0 0 2" />
+                            <Icon:PackIconMaterial Style="{StaticResource ButtonIcon}" />
+                        </Grid>
+                    </Button>
+
+                    <Button Style="{StaticResource Button}" Background="SkyBlue" Foreground="White">
+                        <Grid>
+                            <TextBlock Text="Albums" Margin="0 0 0 2" />
+                            <Icon:PackIconMaterial Style="{StaticResource ButtonIcon}" />
+                        </Grid>
+                    </Button>
+
+                    <TextBlock Text="Discover" Style="{StaticResource Title}" />
+
+                    <Button Style="{StaticResource Button}" Background="SkyBlue" Foreground="White">
+                        <Grid>
+                            <TextBlock Text="For You" Margin="0 0 0 2" />
+                            <Icon:PackIconMaterial Style="{StaticResource ButtonIcon}" />
+                        </Grid>
+                    </Button>
+
+                    <Button Style="{StaticResource Button}" Background="SkyBlue" Foreground="White">
+                        <Grid>
+                            <TextBlock Text="Radio" Margin="0 0 0 2" />
+                            <Icon:PackIconMaterial Style="{StaticResource ButtonIcon}" />
+                        </Grid>
+                    </Button>
+
+                    <Button Style="{StaticResource Button}" Background="SkyBlue" Foreground="White">
+                        <Grid>
+                            <TextBlock Text="Store" Margin="0 0 0 2" />
+                            <Icon:PackIconMaterial Style="{StaticResource ButtonIcon}" />
+                        </Grid>
+                    </Button>
+
+                </StackPanel>
+            </Border>
+
+            <!--Music-->
+            <StackPanel Grid.Column="1" Background="White" Margin="40 60 10 0">
+                <TextBlock Text="Home" Style="{StaticResource titleText}"></TextBlock>
+
+                <Border CornerRadius="20" Margin="0 20 0 0">
+                    <Border.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="SkyBlue" Offset="0" />
+                            <GradientStop Color="Aqua" Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="20" ShadowDepth="0" Opacity="0.4" Color="White" />
+                    </Border.Effect>
+
+                    <Grid>
+                        <Border CornerRadius="20"  Opacity="0.07">
+                            <Border.Background>
+                                <ImageBrush ImageSource="/Images/weeknd.jpg" />
+                            </Border.Background>
+                        </Border>
+
+                        <!--Music Section-->
+                        <StackPanel Margin="30">
+                            <TextBlock Text="Daily Singer" Foreground="White" FontSize="26" FontWeight="Bold" />
+                            <TextBlock Text="The Weeknd" Foreground="White" FontSize="18" FontWeight="SemiBold" Margin="0 10 0 20"/>
+
+                            <uc:SongItem Number="01" Title="Blinding Lights" Time="3:20" />
+                            <uc:SongItem Number="02" Title="Save Your Tears" Time="3:26" />
+                            <uc:SongItem Number="03" Title="Starboy" Time="3:50" />
+                            <uc:SongItem Number="04" Title="The Hills" Time="4:02" />
+                            <uc:SongItem Number="05" Title="You Right" Time="3:06" />
+                            <uc:SongItem Number="06" Title="Die For You" Time="4:20" />
+                            <uc:SongItem Number="07" Title="Too Late" Time="3:59" />
+                        </StackPanel>
+
+                    </Grid>
+                </Border>
+            </StackPanel>
+
+
+            <!--Right Side-->
+            <Border Grid.Column="2" CornerRadius="0 40 0 0" Background="White" Margin="0 22 0 0">
+                <StackPanel Margin="30 50 30 0">
+                    <TextBlock Text="Popular" Style="{StaticResource titleText}" Margin="0 0 0 10" FontSize="28" />
+
+                    <!--Popular-->
+                    <uc:PopularSong Title="Blinding Lights" Time="3:20" Image="/Images/weeknd.jpg" IsActive="True" />
+                    <uc:PopularSong Title="Industry Baby" Time="3:32" Image="/Images/don.jpg" />
+                    <uc:PopularSong Title="Sunroof" Time="2:43" Image="/Images/music6.jpg" />
+                    <uc:PopularSong Title="Shape Of You" Time="3:53" Image="/Images/music2.jpg" />
+
+                    <TextBlock Text="Playlists" Style="{StaticResource titleText}" Margin="0 30 0 20" FontSize="24" />
+
+                    <!--Playlists-->
+                    <StackPanel Orientation="Horizontal">
+                        <uc:Playlist Title="Low-Fi" Description="Vibes" Image="/Images/music3.jpg" />
+                        <uc:Playlist Title="Hype Music" Description="Turn it up" Image="/Images/music4.jpg" Margin="4 0 0 0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+
+            <!---Player-->
+            <Border Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Background="SkyBlue" CornerRadius="40 0 40 0" Margin="40 0 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="60" Height="60" Margin="30 0 0 0">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="Images/weeknd.jpg" />
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+
+                    <StackPanel VerticalAlignment="Center" Margin="20 0 30 0">
+                        <TextBlock Text="Me" Foreground="White" FontSize="22" FontWeight="Bold" />
+                        <TextBlock Text="The Weeknd" Foreground="White" FontSize="22" FontWeight="Bold" />
+                    </StackPanel>
+
+                    <!--Music Player Buttons and Slider-->
+                    <Button Style="{StaticResource playerButton}">
+                        <Icon:PackIconMaterial Kind="SkipPrevious" Style="{StaticResource playerButtonIcon}"/>
+                    </Button>
+
+                    <Button Style="{StaticResource playerButton}">
+                        <Icon:PackIconMaterial Kind="Pause" Style="{StaticResource playerButtonIcon}"/>
+                    </Button>
+
+                    <Button Style="{StaticResource playerButton}">
+                        <Icon:PackIconMaterial Kind="SkipNext" Style="{StaticResource playerButtonIcon}"/>
+                    </Button>
+
+                    <Slider Style="{DynamicResource SliderStyle1}" x:Name="slider" IsSelectionRangeEnabled="True" VerticalAlignment="Center" Value="5" Width="350" SelectionEnd="{Binding ElementName=slider,Path=Value}"/>
+
+                    <Button Style="{StaticResource playerButton}">
+                        <Icon:PackIconMaterial Kind="VolumeMedium" Style="{StaticResource playerButtonIcon}"/>
+                    </Button>
+
+
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
+</Window>
